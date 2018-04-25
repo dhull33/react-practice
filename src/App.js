@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Projects from './components/Projects.js';
+import AddProjects from './components/AddProjects.js';
 import './App.css';
 
 class App extends Component {
@@ -8,12 +9,13 @@ class App extends Component {
         super();
 
         //S
-        this.state={
-
+        this.state= {
+            projects: []
         }
     }
 
     componentWillMount(){
+
         this.setState(
             {
                 projects: [
@@ -43,7 +45,11 @@ class App extends Component {
           <div>
            {/*{<Projects projects={"Hello World!"} />} */}
             {/*Hello World*/}
-            <Projects projects={this.state.projects}/>
+
+            {/*projects is a child component of App?*/}
+            <Projects projects={this.state.projects} />
+              <AddProjects />
+
           </div>
         );
       }

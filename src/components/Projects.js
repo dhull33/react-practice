@@ -10,24 +10,27 @@ class Projects extends Component {
 
             projectItems = this.props.projects.map(project => {
                 //This loops through all objects in array 'projects'
+
                 return(
                     <ProjectItem key={project.title}  project={project}/>
                 )
 
 
 
-            })
-        }
+            });
+        };
 
 
 
         return (
             <div>
-                This is confusing <br></br>
+
+                {projectItems} <br />
+                What the devil?!?!?!
 
             </div>
-        );
-    }
-}
+        )
+    };
+};
 
 export default Projects;
