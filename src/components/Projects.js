@@ -24,7 +24,7 @@ class Projects extends Component {
         return (
             <div>
                 This is confusing <br></br>
-                {projectItems}
+
             </div>
         );
     }
