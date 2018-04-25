@@ -23,9 +23,11 @@ class AddProjects extends Component {
 
     //    Test information
         if(this.refs.title.value === ''){
+
             alert('title is required');
         }
         else{
+
             //this.setState is how we update our state
             this.setState(
                 {newProject: {
@@ -33,9 +35,10 @@ class AddProjects extends Component {
                         category: this.refs.category.value
                     }
             }, function(){
-                this.props.AddProjects(this.state.newProject);
-                }
-                )
+                //  addProjects is the name of a property that is set in App.js in <AddProjects addProject={} />
+                this.props.addProjects(this.state.newProject);
+
+                })
 
         }
     }

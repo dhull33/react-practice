@@ -38,9 +38,20 @@ class App extends Component {
         )
     }
 
+    handleAddProject(project){;
+        console.log('What is being sent to us');
+        console.log(project);
+
+        let projects= this.state.projects;
+
+        projects.push(project);
+
+        this.setState({project: projects});
+    }
+
   render() {
 
-        console.log(this.state);
+
         return (
           <div>
            {/*{<Projects projects={"Hello World!"} />} */}
@@ -48,7 +59,8 @@ class App extends Component {
 
             {/*projects is a child component of App?*/}
             <Projects projects={this.state.projects} />
-              <AddProjects />
+
+              <AddProjects addProjects={this.handleAddProject.bind(this)} />
 
           </div>
         );
