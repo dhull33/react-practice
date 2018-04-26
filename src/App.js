@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Projects from './components/Projects.js';
 import AddProjects from './components/AddProjects.js';
-import PropTypes from 'prop-types';
+// import propTypes from 'prop-types';
 
 //generates unique id's
 import uuid from 'uuid';
@@ -16,11 +16,26 @@ class App extends Component {
 
         //S
         this.state= {
-            projects: []
+            projects: [],
+            todos: []
         }
     }
 
-    componentWillMount(){
+    // this.setState({new State}, callback-function)
+    getToDos(){
+
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(res => res.json())
+            .then(data => this.setState({todos:data}, function(){
+                console.log(this.state);
+        }))
+
+
+    }
+
+
+    getProjects(){
+        this.getToDos();
 
         this.setState(
             {
@@ -47,6 +62,43 @@ class App extends Component {
         )
     }
 
+
+
+
+    componentWillMount(){
+
+
+        this.getProjects();
+
+        this.getToDos();
+
+        this.setState(
+            {
+                projects: [
+                    {
+                        id: uuid.v4(),
+                        title: 'Digital Crafts',
+                        category: 'Coding Boot Camp'
+                    },
+
+                    {
+                        id: uuid.v4(),
+                        title: 'University of Houston',
+                        category: 'Houston Public University '
+                    },
+
+                    {
+                        id: uuid.v4(),
+                        title: 'University of Texas at Austin',
+                        category: 'Best University evaaaaaaaaa'
+                    }
+                ]
+            }
+        )
+
+
+    }
+
     handleAddProject(project){;
         console.log('What is being sent to us');
         console.log(project);
@@ -61,7 +113,7 @@ class App extends Component {
     handleDeleteProject(id){
         let projects= this.state.projects;
 
-        let index = projects.findIndex(x => x.id == id);
+        let index = projects.findIndex(x => x.id === id);
 
         projects.splice(index, 1);
 
