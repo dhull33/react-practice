@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import uuid from 'uuid';
+import propTypes from 'prop-types';
 class AddProjects extends Component {
 
     constructor(){
@@ -12,6 +13,7 @@ class AddProjects extends Component {
 
 
     static defaultProps= {
+        //This is what we want to show up in our drop down
         categories: ['Coding Boot Camp', 'Houston Public University', 'Best university evaaaaaaaa']
     };
 
@@ -31,6 +33,7 @@ class AddProjects extends Component {
             //this.setState is how we update our state
             this.setState(
                 {newProject: {
+                        id: uuid.v4(),
                         title: this.refs.title.value,
                         category: this.refs.category.value
                     }
@@ -88,4 +91,8 @@ class AddProjects extends Component {
     }
 }
 
+AddProjects.propTypes= {
+    categories: propTypes.array,
+    addProject: propTypes.func
+}
 export default AddProjects;

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import Projects from './components/Projects.js';
 import AddProjects from './components/AddProjects.js';
+import PropTypes from 'prop-types';
+
+//generates unique id's
+import uuid from 'uuid';
+
+
 import './App.css';
 
 class App extends Component {
@@ -20,16 +26,19 @@ class App extends Component {
             {
                 projects: [
                     {
+                        id: uuid.v4(),
                         title: 'Digital Crafts',
                         category: 'Coding Boot Camp'
                     },
 
                     {
+                        id: uuid.v4(),
                         title: 'University of Houston',
                         category: 'Houston Public University '
                     },
 
                     {
+                        id: uuid.v4(),
                         title: 'University of Texas at Austin',
                         category: 'Best University evaaaaaaaaa'
                     }
@@ -49,6 +58,16 @@ class App extends Component {
         this.setState({project: projects});
     }
 
+    handleDeleteProject(id){
+        let projects= this.state.projects;
+
+        let index = projects.findIndex(x => x.id == id);
+
+        projects.splice(index, 1);
+
+        this.setState({project: projects});
+    }
+
   render() {
 
 
@@ -58,7 +77,7 @@ class App extends Component {
             {/*Hello World*/}
 
             {/*projects is a child component of App?*/}
-            <Projects projects={this.state.projects} />
+            <Projects onDelete={this.handleDeleteProject.bind(this)} projects={this.state.projects} />
 
               <AddProjects addProjects={this.handleAddProject.bind(this)} />
 

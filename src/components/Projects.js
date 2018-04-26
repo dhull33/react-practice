@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import ProjectItem from './ProjectItem'
+//import uuid from 'uuid';
+import ProjectItem from './ProjectItem';
 
 class Projects extends Component {
+
+    deleteProject(id){
+        this.props.onDelete(id);
+    }
+
     render() {
 
         let projectItems;
@@ -12,7 +18,7 @@ class Projects extends Component {
                 //This loops through all objects in array 'projects'
 
                 return(
-                    <ProjectItem key={project.title}  project={project}/>
+                    <ProjectItem onDelete={this.deleteProject.bind(this)} key={project.id}  project={project}/>
                 )
 
 
@@ -26,7 +32,6 @@ class Projects extends Component {
             <div>
 
                 {projectItems} <br />
-                What the devil?!?!?!
 
             </div>
         )
