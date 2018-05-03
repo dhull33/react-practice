@@ -24,4 +24,4 @@ function mapDispatchToProps(dispatch){
 const connectedComponent = connect(
     mapStateToProps,
     mapDispatchToProps
-)(cart)
+)
