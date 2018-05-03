@@ -21,11 +21,22 @@ class AddProduct extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                    {this.props.productCart.map(productData => {
-                        <tr> </tr>
+
+                        <tr>
+                            {this.props.productCart.map(productData =>(
+                                <tr key={product.Data.productName}>
+                                    <td> {productData.productName} </td>
+                                    <td> {productData.productPrice} </td>
+                                    <td onClick = {}> </td>
+                                </tr>
+                            ))};
 
 
-                        }
+                        </tr>
+
+
+
+
 
                     )}
                     </tbody>
