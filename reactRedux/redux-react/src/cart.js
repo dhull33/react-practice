@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as cartActions from '../actions/cart';
-import Shelf from './shelf';
+import AddProduct from './AddProduct'
 
-class Cart extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+
+class AddProduct extends Component {
     render() {
-        const cartList = this.props.cart.map((item, idx) => {
-            return <li key={idx}>{item}</li>;
-        });
         return (
-            <div className="Cart">
-                <Shelf addItem={this.props.action.addToCart}/>
-                <h2>Shopping Bag</h2>
-                <ol>
-                    {cartList}
-                </ol>
+            <div className="App-intro">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Product Name
+                            </th>
+                            <th>
+                                Product Price
+                            </th>
+                            <th>
+                                $
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {this.props.productCart.map(productData => {
+                        <tr> </tr>
+
+
+                        }
+
+                    )}
+                    </tbody>
+                </table>
             </div>
         );
     }
 }
-function mapStateToProps(state, props) {
-    return {
-        cart: state.cart
-    };
-}
-function mapDispatchToProps(dispatch) {
-    return {
-        action: bindActionCreators(cartActions, dispatch)
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+
+export default App;

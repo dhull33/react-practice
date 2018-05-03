@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
+import { connect } from "react-redux";
+import Cart from "./Cart";
 
-
-import Cart from './components/cart';
-
-class App extends Component {
-    render() {
-        return (
-            <div className="App-intro">
-                <Cart />
-            </div>
-        );
+function mapStateToProps(state){
+    return{
+        totalCost: state.totalCost,
+        productCart: state.productCart
     }
 }
 
-export default App;
+function mapDispatchToProps(dispatch){
+    return{
+    onAddProduct: (productName, productPrice) => dispatch(
+        {
+        type: "addProduct",
+        productData: {
+            productName: productName,
+            productPrice: productPrice
+            }
+        })
+    }
+}
+
+const connectedComponent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(cart)
